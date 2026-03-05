@@ -1,4 +1,4 @@
-# Lumee Smart Lamp - Static Assets & Configurations
+# Blink Smart Lamp - Static Assets & Configurations
 
 This repository hosts public static files, remote configurations, and legal documents for the **Lumee** smart ambient lamp ecosystem (including the React Native mobile application and ESP32 firmware).
 
