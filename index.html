@@ -141,6 +141,162 @@
             box-shadow: 0 8px 25px rgba(74, 222, 128, 0.15);
         }
 
+        /* Guide Link with Pulsing Animation */
+        @keyframes pulseText {
+            0%, 100% {
+                color: var(--text-muted);
+                text-shadow: none;
+            }
+            50% {
+                color: var(--text-main);
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            }
+        }
+
+        .guide-link {
+            margin-top: 32px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1rem;
+            font-family: inherit;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            outline: none;
+            animation: pulseText 3s infinite ease-in-out;
+        }
+
+        .guide-link:hover {
+            animation: none;
+            color: var(--text-main);
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+            transform: scale(1.05);
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(12, 12, 13, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 100;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 32px;
+            width: 90%;
+            max-width: 340px;
+            transform: scale(0.9) translateY(40px);
+            opacity: 0;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            text-align: left;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .close-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--text-muted);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--text-main);
+            transform: rotate(90deg);
+        }
+
+        .instruction-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .instruction-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 14px 16px;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            border: none; 
+            cursor: default;
+        }
+
+        .instruction-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(6px);
+        }
+
+        .click-badge {
+            background-color: transparent;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 6px 12px;
+            border-radius: 10px;
+            min-width: 45px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .instruction-item:hover .click-badge {
+            border-color: var(--pink-solid);
+            color: var(--pink-solid);
+            background-color: rgba(236, 72, 153, 0.08);
+            box-shadow: 0 0 12px rgba(236, 72, 153, 0.3);
+        }
+
+        .instruction-text {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
         @media (min-width: 600px) {
             .buttons-wrapper {
                 flex-direction: row;
@@ -164,21 +320,75 @@
     </p>
 
     <div class="buttons-wrapper">
-        <a href="#" class="download-btn btn-ios">
+        <a href="https://github.com/belinked-iot/static/releases/download/app-v1.0.0/Blink_v1.0.0.ipa" class="download-btn btn-ios">
             <svg viewBox="0 0 384 512">
                 <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
             </svg>
             Get for iOS
         </a>
 
-        <a href="https://expo.dev/artifacts/eas/uU16bB3NWv78KHy2PDKGZR.apk" class="download-btn btn-android">
+        <a href="https://github.com/belinked-iot/static/releases/download/app-v1.0.0/Blink_v1.0.0.apk" class="download-btn btn-android">
             <svg viewBox="0 0 512 512">
                 <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/>
             </svg>
             Get for Android
         </a>
     </div>
+
+    <button class="guide-link" id="openModalBtn">How to use the lamp?</button>
 </div>
+
+<div class="modal-overlay" id="guideModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Lamp Controls</h2>
+            <button class="close-btn" id="closeModalBtn">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <path d="M1 1l12 12M13 1L1 13"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="instruction-list">
+            <div class="instruction-item">
+                <div class="click-badge">1 Click</div>
+                <div class="instruction-text">Turn ON / Blink</div>
+            </div>
+            <div class="instruction-item">
+                <div class="click-badge">2 Clicks</div>
+                <div class="instruction-text">Turn OFF</div>
+            </div>
+            <div class="instruction-item">
+                <div class="click-badge">3 Clicks</div>
+                <div class="instruction-text">Change mode</div>
+            </div>
+            <div class="instruction-item">
+                <div class="click-badge">Hold</div>
+                <div class="instruction-text">Change color</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+  const modal = document.getElementById('guideModal');
+  const openBtn = document.getElementById('openModalBtn');
+  const closeBtn = document.getElementById('closeModalBtn');
+
+  openBtn.addEventListener('click', () => {
+    modal.classList.add('active');
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.classList.remove('active');
+  });
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.remove('active');
+    }
+  });
+</script>
 
 </body>
 </html>
