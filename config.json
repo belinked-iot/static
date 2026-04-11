@@ -20,8 +20,8 @@
       "force": false
     },
     "blink_classic": {
-      "version": "v0.0.8",
-      "url": "https://github.com/belinked-iot/static/releases/download/v0.0.8/firmware-blink_classic-v0.0.8.bin",
+      "version": "v0.0.9",
+      "url": "https://github.com/belinked-iot/static/releases/download/v0.0.9/firmware-blink_classic-v0.0.9.bin",
       "force": false
     }
   }
